@@ -60,21 +60,29 @@ class _TodoPageState extends State<TodoList> {
         });
       }
     }
-    return Column(
-      children: [
-        ListView.builder(
-          itemBuilder: _buildItem,
-          itemCount: todos.length,
-          scrollDirection: Axis.vertical,
-          shrinkWrap: true,
-        ),
-        FloatingActionButton(
-          backgroundColor: Colors.deepPurple,
-          foregroundColor: Colors.white,
-          onPressed: addTodo,
-          child: Icon(Icons.add),
-        ),
-      ],
+    return Scaffold(
+      body: Column(
+        children: [
+          Expanded(
+            child: Container(
+              color: Theme.of(context).colorScheme.primaryContainer,
+              child: ListView.builder(
+                itemBuilder: _buildItem,
+                itemCount: todos.length,
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+              ),
+            ),
+          ),
+        ],
+      ),
+      floatingActionButton:  FloatingActionButton(
+        backgroundColor: Colors.deepPurple,
+        foregroundColor: Colors.white,
+        onPressed: addTodo,
+        child: Icon(Icons.add),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 }
